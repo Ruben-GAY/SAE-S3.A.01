@@ -1,0 +1,27 @@
+.voteQuestion{
+    position: relative;
+    background-color: #ECECEC; 
+    box-shadow: 0 0 15px 1px rgb(155, 152, 152);
+    margin: 0 0 5% 5%;
+}
+
+.white-block {
+    padding: 2%;
+    margin: 3% 0 3% 0;
+    border-radius: 10px;
+    width: 70%;
+    min-height: 20rem;
+    box-shadow: 0 0 15px 1px rgb(155, 152, 152);
+}
+
+
+.select-div {
+    position: absolute;
+    left: 70%;
+    bottom: 45%;
+    width: 20%;
+}
+
+select {
+    scale: 1.5;
+}

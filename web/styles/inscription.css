@@ -1,0 +1,19 @@
+.input {
+    border: none;
+    box-shadow: 0 0 5px 1px #B5B5B5;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.3rem;
+    height: 2.5rem;
+    width: 35%;
+}
+
+label {
+    margin: 1% 0 1% 0;
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+.info-box {
+    margin-bottom: 3%;
+}

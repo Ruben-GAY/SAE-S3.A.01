@@ -1,0 +1,47 @@
+.normal-text {
+    font-size: 1.5em;
+    margin-bottom: 2%;
+}
+
+.infoQ-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 2% 0 2% 0;
+}
+
+.contenu-question {
+    margin-left: 1%;
+    width: 65%;
+    text-align: justify;
+    font-size: 1.3em;
+}   
+
+
+.reponse-container{
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+    width: 55%;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 1% 0 2% 0;
+}
+
+.authors{
+    margin-left: 5px;
+}
+
+.reponse {
+    margin-top: 5%;
+}
+
+.rep {
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-size: 1.3em;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+

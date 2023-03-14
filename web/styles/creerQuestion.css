@@ -1,0 +1,127 @@
+.page-container {
+    height: 100%;
+    margin: 2% 0 0 15%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-title {
+    margin-bottom: 5%;
+    font-size: 2.5rem;
+}
+
+.private-check{
+    margin: 2% 0 2% 0;
+    font-size: 1.2em;
+    align-items: center;
+}
+
+
+.private-check input {
+    transform: scale(1.5);
+    margin-right: 1%;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    margin: 1% 0 1% 0;
+}
+
+.blue-round {   
+    color: #fff;
+    display: flex;
+    height: 40px;
+    width: 120px;
+    background-color: #2F435E;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: .7rem;
+}
+
+.title-div {
+    margin-bottom: 3%;
+}
+
+.big {
+    height: 50px;
+    width: 170px;
+    font-size: 1.4rem; 
+}
+
+.btn {
+    border: none;   
+    box-shadow: 0 0 15px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.btn:active {
+    box-shadow: none;
+}
+
+.ppl-container {
+    margin: 1rem;
+}
+
+.add-button {
+    height: 40px;
+    width: 40px;
+}
+
+
+.date-container {
+    margin: 1rem;
+    
+}
+
+.date-info, .date-info p {
+    margin: 1rem;
+    align-items: center;
+}
+
+
+.date-input{
+    height: 2rem;
+    width: 6rem;
+    color: #000;
+    font-size: 1rem;
+}
+
+.text {
+    border: none;
+    box-shadow: 0 0 5px 1px #B5B5B5;
+    border-radius: 5px;
+    width: 60%;
+    padding: 5px;
+    font-size: 1.3rem;
+    height: 10rem;
+}
+
+.text-title {
+    height: 2.5rem;
+    width: 35%;
+}
+
+.sec-title {
+    margin: 3% 0 1% 0;
+    width: 20%;
+    height: 5%;
+}
+
+.footer{
+    margin-left: 0;
+    position: relative;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 5rem;
+}
