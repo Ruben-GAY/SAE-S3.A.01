@@ -11,8 +11,9 @@ class Utilisateur {
     private string $email;
     private string $motDePasse;
     private string $dateDeNaissance;
+    private ?string $role;
 
-    public function __construct(?string $id, string $nom, string $prenom, string $pseudo, string $email, string $motDePasse, string $dateDeNaissance) {
+    public function __construct(?string $id, string $nom, string $prenom, string $pseudo, string $email, string $motDePasse, string $dateDeNaissance, ?string $role) {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -20,6 +21,7 @@ class Utilisateur {
         $this->email = $email;
         $this->motDePasse = $motDePasse;
         $this->dateDeNaissance = $dateDeNaissance;
+        $this->role = $role;
     }
 
     public function getId(): ?string {
@@ -53,29 +55,35 @@ class Utilisateur {
         $this->pseudo = $pseudo;
     }
 
-    
     public function getEmail(): string {
         return $this->email;
     }
-    
+
     public function setEmail(string $email): void {
         $this->email = $email;
     }
-    
+
     public function getMotDePasse(): string {
         return $this->motDePasse;
     }
-    
+
     public function setMotDePasse(string $motDePasse): void {
         $this->motDePasse = $motDePasse;
     }
-    
+
     public function getDateDeNaissance(): string {
         return $this->dateDeNaissance;
     }
-    
+
     public function setDateDeNaissance(string $dateDeNaissance): void {
         $this->dateDeNaissance = $dateDeNaissance;
     }
-    
+
+    public function getRole(): ?string {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): void {
+        $this->role = $role;
+    }
 }

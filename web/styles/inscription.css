@@ -17,3 +17,16 @@ label {
 .info-box {
     margin-bottom: 3%;
 }
+
+.redirect-link {
+    margin-top: 3%;
+    font-size: 1.3rem;
+    margin-bottom: 1.5%;
+}
+
+.redirect-link a {
+    cursor: pointer;
+    color:  #2F435E;
+    text-decoration: none;
+    font-weight: bolder;
+}

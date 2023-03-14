@@ -50,6 +50,15 @@ class Vote {
         "Défavorable" => -1,
         "Très Défavorable" => -2
     ];
+    
+    public static $nbToVote = [
+        2 => "Très Favorable",
+        1 => "Favorable",
+        0 =>  "Neutre",
+        -1 => "Défavorable",
+        -2 => "Très Défavorable"
+    ];
+    
 
     
 }

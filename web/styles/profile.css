@@ -1,0 +1,30 @@
+.info {
+    font-size: 1.4rem;
+    margin-bottom: 1.4rem;
+    
+}
+
+span {
+    font-weight: bolder;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.profile-btn{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.top-profil {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-type{
+    font-size: 1.3rem;
+}
+

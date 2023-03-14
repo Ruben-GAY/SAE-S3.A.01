@@ -9,7 +9,7 @@ use App\Feurum\Model\DataObject\Vote;
 class VoteRepository {
 
     // construit un objet Vote à partir tableau
-    static function construire(array $voteTab) : Vote {
+    static function construire(array $voteTab): Vote {
         return new Vote(
             $voteTab['iduser'],
             $voteTab['idreponse'],
@@ -30,12 +30,20 @@ class VoteRepository {
 
     // retourne le vote correspondant à l'id passer en paramètre
 
-    static function getVoteByUserAndQuestionId(int $iduser, int $idreponse) {
+    static function getVoteByUserAndQuestionId(int $iduser, int $idQuestion) {
         $pdo = DatabaseConnection::getPdo();
-        $pdoStatement = $pdo->prepare("SELECT * FROM vote WHERE iduser = :iduser AND idreponse = :idreponse");
-        $pdoStatement->execute(['iduser' => $iduser, 'idreponse' => $idreponse]);
-        $vote = $pdoStatement->fetch();
-        return $vote ? static::construire($vote) : null;
+
+
+        $pdoStatement = $pdo->prepare("SELECT * FROM vote WHERE iduser = :iduser AND idreponse IN (SELECT id FROM reponse WHERE idquestion = :idquestion)");
+        $pdoStatement->execute(['iduser' => $iduser, 'idquestion' => $idQuestion]);
+        $votes = [];
+        foreach ($pdoStatement as $vote) {
+            $votes[] = static::construire($vote);
+        }
+
+
+
+        return $votes;
     }
 
     // sauvegarde le vote passer en paramètre dans la base de données
@@ -82,30 +90,74 @@ class VoteRepository {
         return $nbVote ? $nbVote[0] : null;
     }
 
-    static function getGagnant(Question $question) {
+    static function getNbVoteByQuestion(Question $question) {
+        $pdo = DatabaseConnection::getPdo();
+        $pdoStatement = $pdo->prepare("SELECT COUNT(*) FROM vote WHERE idreponse IN (SELECT id FROM reponse WHERE idquestion = :idquestion)");
+        $pdoStatement->execute([
+            'idquestion' => $question->getId(),
+        ]);
+        $nbVote = $pdoStatement->fetch();
+        return $nbVote ? $nbVote[0] : null;
+    }
+
+    static function getResultat(Question $question) {
+
+        $pdo = DatabaseConnection::getPdo();
+
+
+        $pdoStatement = $pdo->prepare("SELECT * FROM reponse r WHERE r.id = (SELECT idReponse FROM resultat r WHERE r.idQuestion = :idQuestion)");
+
+        $pdoStatement->execute([
+            'idQuestion' => $question->getId(),
+        ]);
+
+        $resultat = $pdoStatement->fetch();
+
+        if ($resultat) {
+            return ReponseRepository::construire($resultat);
+        }
+
         $reponses = ReponseRepository::getReponsesByQuestion($question);
         $tab = [];
         foreach ($reponses as $reponse) {
             $t = [
-                "reponse" =>static::getVoteByReponseId($reponse->getId()),
+                "reponse" => static::getVoteByReponseId($reponse->getId()),
                 "score" => 0,
             ];
             $votes = static::getVoteByReponseId($reponse->getId());
-            $t["score"] = array_reduce($votes, function($carry, $vote) {
+            $t["score"] = array_reduce($votes, function ($carry, $vote) {
                 return $carry + $vote->getValeur();
             }, 0);
             $tab[] = $t;
         }
 
-        $gagnant = array_reduce($tab, function($carry, $item) {
+        $gagnant = array_reduce($tab, function ($carry, $item) {
             if ($carry["score"] < $item["score"]) {
                 return $item;
             }
             return $carry;
-        }, ["reponse" => 0, "score" => 0]);
+        }, ["reponse" => [-1], "score" => -1]);
+        if(count($gagnant["reponse"]) < 1){
+            return null;
+        }
+        $rep = $gagnant["reponse"][0]?->getIdReponse();
 
-        return $gagnant["reponse"];
+        $pdoStatement = $pdo->prepare("INSERT INTO resultat (idQuestion, idReponse, nbVote) VALUES (:idQuestion, :idReponse, :nbVote)");
 
+        $pdoStatement->execute([
+            'idQuestion' => $question->getId(),
+            'idReponse' => $rep,
+            'nbVote' => $gagnant["score"],
+        ]);
+
+        $pdoStatement = $pdo->prepare("SELECT * FROM reponse r WHERE r.id = (SELECT idReponse FROM resultat r WHERE r.idQuestion = :idQuestion)");
+
+        $pdoStatement->execute([
+            'idQuestion' => $question->getId(),
+        ]);
+
+        $resultat = $pdoStatement->fetch();
+
+        return ReponseRepository::construire($resultat);
     }
-
 }

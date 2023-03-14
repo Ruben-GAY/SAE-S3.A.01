@@ -2,7 +2,7 @@
     position: relative;
     background-color: #ECECEC; 
     box-shadow: 0 0 15px 1px rgb(155, 152, 152);
-    margin: 0 0 5% 5%;
+    margin: 0 0 15% 5%;
 }
 
 .white-block {
@@ -24,4 +24,15 @@
 
 select {
     scale: 1.5;
+}
+
+.ppl-info {
+    display: flex;
+    width: auto;
+    margin: 4% 4% 0 0;
+
+}
+
+h2 {
+    margin-bottom: 1.5%;
 }

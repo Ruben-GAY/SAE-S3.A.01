@@ -14,11 +14,14 @@
                 </div>
 
                 <div class="ppl-container flex-col">
-                    <h3> Collaborateurs : </h3>
-                    <div class="flex-row">
-                        <div class="blue-round"> collaborateur 1</div>
-                        <div class="blue-round"> collaborateur 2</div>
-                        <div class="blue-round add-button"> + </div>
+                <h3> Coauteur : </h3>
+                    <div class="flex-row" style="position: relative;">
+                        <div class="flex-row" id="coauteurs" ></div>
+                        <div class="blue-round add-button" id="add-ct">+</div>
+                        <div class="search-container" id="search-container-ct">
+                            <input class="search-input" id="search-ct" type="text" placeholder="pseudo">
+                            <div class="suggestions" id="suggestions-ct" ></div>
+                        </div>
                     </div>
                 </div>
                 <?php foreach($sections as $i => $section): ?>

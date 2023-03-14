@@ -19,7 +19,7 @@
                   foreach($sections as $section): ?>
                     <div class='txt-area flex-col'>
                         <input type="hidden" name="sections[<?=$i?>][id]" value="<?= $section->getId()  ?>">
-                        <input class="sec-title input" type="text" name="sections[<?=$i?>][titre]" value="<?= $section->getTitre()?>">
+                        <div class="infoQ-title"> <?= $section->getTitre() ?> </div>
                         <textarea required="true"   class='text' name="sections[<?=$i?>][contenu]" id="intro" cols="30" rows="10"><?= $section->getContenu()?></textarea>
                     </div>
                     <?php $i++; ?>

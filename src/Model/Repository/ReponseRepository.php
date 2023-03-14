@@ -14,9 +14,9 @@ class ReponseRepository {
             $reponse['titre'],
             $reponse['idQuestion']
         );
-    } 
+    }
 
-    
+
     public static function getReponsesByQuestion(Question $question): array {
         $pdo = DatabaseConnection::getPdo();
         $pdoStatement = $pdo->prepare("SELECT * FROM reponse WHERE idQuestion = :idQuestion");
@@ -49,6 +49,25 @@ class ReponseRepository {
             'idQuestion' => $reponse->getIdQuestion()
         ]);
     }
+    // table vote :
+    //  1	iduser  Primaire	int(11)			
+    // 	2	idreponse  PrimaireIndex	int(11)
+    // 	3	valeur	int(11)	
+
+    public static function getReponsesNonVoteByQuestion(Question $question, $iduser) {
+        $pdo = DatabaseConnection::getPdo();
+        $pdoStatement = $pdo->prepare("SELECT * FROM reponse WHERE idQuestion = :idQuestion AND id NOT IN (SELECT idreponse FROM vote WHERE iduser = :iduser)");
+        $pdoStatement->execute([
+            "idQuestion" => $question->getId(),
+            "iduser" => $iduser
+        ]);
+
+        $res = [];
+        foreach ($pdoStatement as $reponse) {
+            $res[] = self::construire($reponse);
+        }
+        return $res;
+    }
 
     public static function supprimer(Reponse $reponse) {
         $pdo = DatabaseConnection::getPdo();
@@ -67,5 +86,4 @@ class ReponseRepository {
             'idQuestion' => $reponse->getIdQuestion()
         ]);
     }
-
 }

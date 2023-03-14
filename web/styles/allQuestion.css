@@ -46,6 +46,7 @@
 .question-title {
     color: black;
     font-size: 1.3rem;
+    margin-top: 1%;
 }
 
 .question-icon {
@@ -90,10 +91,13 @@
 .grey-btn {
     background-color: #fff;
     width: 7rem;
-    height: 2rem;
+    height: 2.5rem;
     border-radius: 5px;
     border: none;
-    box-shadow: 0 0 20px 2px grey ;    
+    box-shadow: 0 0 20px 2px grey ;
+    font-size: 1rem;  
+    cursor: pointer;
+    margin-bottom: 1%;
 }
 
 .grey-btn:active {
@@ -104,3 +108,32 @@
     text-decoration: none;
     color: #000;
 }
+
+
+@media (max-width: 600px) {
+    /* les règles de style ci-dessous s'appliquent aux écrans de largeur maximale de 600px */
+
+    html {
+        font-size: 13px;
+    }
+
+    body {
+      font-size: 16px;
+
+    }
+
+    #navbar {
+        width: auto;
+    }
+
+    .logo-container {
+        width: 30px;
+        height: 30px;
+    }
+
+    h2 {
+        margin-bottom: 5%;
+    }
+
+
+  }

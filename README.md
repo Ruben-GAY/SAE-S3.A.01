@@ -5,7 +5,7 @@ Pour lancer le serveur :
 on se met dans le dossier SAE et on fait 
 
 ```bash
-     php -S localhost:3000
+     php -S localhost:8000
 ```
 
 

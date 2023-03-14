@@ -14,7 +14,7 @@ class Question extends Proposition {
     private string $dateFinReponse;
     private bool $isPrivate;
 
-    public function __construct(?string $id,string $titre, string $description, string $dateDebutVote, string $dateFinVote, string $dateDebutReponse, string $dateFinReponse, bool $isPrivate) {
+    public function __construct(?string $id, string $titre, string $description, string $dateDebutVote, string $dateFinVote, string $dateDebutReponse, string $dateFinReponse, bool $isPrivate) {
         parent::__construct($id);
         $this->dateDebutVote = $dateDebutVote;
         $this->dateFinVote = $dateFinVote;
@@ -73,19 +73,11 @@ class Question extends Proposition {
         $this->description = $description;
     }
 
-    public function getIsPrivate(): bool {
+    public function isPrivate(): bool {
         return $this->isPrivate;
     }
 
-    public function setIsPrivate(bool $isPrivate): void {
+    public function setPrivate(bool $isPrivate): void {
         $this->isPrivate = $isPrivate;
-    }
-
-    public function afficher() {
-        echo "<p> Utilisateur {$this->prenom} {$this->nom} de login {$this->login} </p>";
-    }
-
-    public function __toString() : string {
-        return "<p> Utilisateur {$this->prenom} {$this->nom} de login {$this->login} </p>";
     }
 }

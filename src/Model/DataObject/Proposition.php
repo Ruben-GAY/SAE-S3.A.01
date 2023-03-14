@@ -8,7 +8,7 @@ abstract class Proposition extends Texte {
         parent::__construct($id);
     }
 
-    public function __toString() : string {
-        return "<p> Text id: {$this->id} organisateur </p>";
+    public function __toString(): string {
+        return "<p> Text id: {$this->getId()} organisateur </p>";
     }
 }
